@@ -201,7 +201,7 @@ def change_for(p, R, T=0, forward=True):
     """
     if forward:  # R.T @ (p_global - pelvis_translation)
         return torch.einsum('...di,...d->...i', R, p - T)
-    else:  # R @ (p_global - pelvis_translation)
+    else:  # R @ p_global + pelvis_translation
         return torch.einsum('...di,...i->...d', R, p) + T
 
 def get_z_rot(rot_, in_format="6d"):
